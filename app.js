@@ -1,3 +1,4 @@
+// Selecting elements for traversing and manipulating
 const menuBtn = document.querySelector('.menuBtn');
 const closeBtn = document.querySelector('.closeBtn');
 const modalBackdrop = document.querySelector('.nav-btns-main');
@@ -9,6 +10,8 @@ const desktopBg = document.querySelector('.desktop-bg');
 const heading = document.querySelector('.heading');
 const paragraph = document.querySelector('article > p');
 
+// An array of mobile image, desktop image, topic and text. 
+// This helps to select a particular image at a specific screen size
 
 let text = [
     {
@@ -31,21 +34,29 @@ let text = [
     },
 ]
 
+// Toggling classes to show and hide modal and its transition
+
 menuBtn.addEventListener('click', () => {
     modalBackdrop.classList.toggle('show');
+    // This add the slide class to allow transition when the menu btn is clicked
     modal.classList.toggle('slide')
 })
 
 
 closeBtn.addEventListener('click', () => {
     modalBackdrop.classList.toggle('show');
+    // This add the slide class to allow transition when the close button is clicked
     modal.classList.toggle('slide')
 })
+
+// Adding fuctionalities when the right and left arrow keys are pressed to change the header background
 
 let index = 0;
 
 navRightBtn.addEventListener('click', () => {
     index = index + 1;
+    
+    // innerWidth property tells the width size of a current page.
     let windowWidth = window.innerWidth;
     
     if(index > text.length - 1) {
@@ -54,8 +65,8 @@ navRightBtn.addEventListener('click', () => {
     heading.textContent = text[index].topic;
     paragraph.textContent = text[index].text;
 
-     
-    // console.log(newDeskImage);
+    // Changing background according to screens size 
+    
     if( windowWidth > 600) {
         newDeskImage = `url(${text[index].imgDesk})`
         desktopBg.style.backgroundImage = newDeskImage;
